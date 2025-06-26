@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ePizzaHub.Models.ApiModels.Request
 {
-    internal class CreateUserRequest
+    public class CreateUserRequest
     {
         public string Name { get; set; } 
         public string Email { get; set; }
