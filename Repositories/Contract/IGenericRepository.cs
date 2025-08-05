@@ -7,6 +7,7 @@
         IEnumerable<T> GetAll();
 
         Task<int> CommitAsync();
+        void Update(T entity);
 
     }
 }

@@ -10,4 +10,7 @@ namespace ePizzaHub.Models.ApiModels.Response
         public List<string> Roles { get; set; }
 
     }
+    
+
+
 }

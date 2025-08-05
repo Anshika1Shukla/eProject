@@ -32,5 +32,9 @@ namespace ePizzaHub.Repositories.Concrete
 
             return query.ToList();
         }
+        public void Update(T entity)
+        {
+            _dbContext.Set<T>().Update(entity);
+        }
     }
 }

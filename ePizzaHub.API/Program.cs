@@ -1,4 +1,5 @@
 
+using ePizzaHub.API.Middleware;
 using ePizzaHub.Core.Concrete;
 using ePizzaHub.Core.Contracts;
 using ePizzaHub.Infrastructure.Models;
@@ -28,13 +29,22 @@ namespace ePizzaHub.API
                      );
             });
             builder.Services.AddScoped<IUserRepository, UserRepository>();
-
             builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+            builder.Services.AddScoped<IItemRepository, ItemRepository>();
+            builder.Services.AddScoped<ICartRepository, CartRepository>();
+
+
 
             builder.Services.AddTransient<IUserService, UserService>();
             builder.Services.AddTransient<IAuthService, AuthService>();
+            builder.Services.AddTransient<IItemService, ItemService>();
+            builder.Services.AddTransient<ICartService, CartService>();
+            builder.Services.AddTransient<ITokenGeneratorService, TokenGeneratorService>();
 
-            
+
+
+
+
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())
@@ -47,7 +57,7 @@ namespace ePizzaHub.API
              
             app.UseAuthorization();
 
-
+            app.UseMiddleware<CommonReponseMiddleware>();
             app.MapControllers();
 
             app.Run();
